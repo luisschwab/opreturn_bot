@@ -4,11 +4,11 @@ import dotenv
 import tweepy
 import requests
 
-dotenv.load_dotenv(".env.prod")
+dotenv.load_dotenv(".env")
 
 NODE_URL = os.getenv("NODE_URL")
 RPC_USER = os.getenv("RPC_USER")
-RPC_PSWD = os.getenv("RPC_PASS")
+RPC_PSWD = os.getenv("RPC_PSWD")
 
 twitterClient = tweepy.Client(
       consumer_key=os.getenv("CONSUMER_KEY"),
