@@ -10,6 +10,9 @@ NODE_URL = os.getenv("NODE_URL")
 RPC_USER = os.getenv("RPC_USER")
 RPC_PSWD = os.getenv("RPC_PSWD")
 
+MINUTES = 2 #Check for new block at every X minutes
+bannedStrings = ['consolidate', 'OUT:', '=:BTC', '=:BNB', '=:ETH'] #Known exchange OP_RETURNS
+
 twitterClient = tweepy.Client(
       consumer_key=os.getenv("CONSUMER_KEY"),
       consumer_secret=os.getenv("CONSUMER_SECRET"),
@@ -64,14 +67,17 @@ def main():
  
       for e in opReturns:
         try:
-          text = e[0] + "\n" + "https://mempool.space/tx/" + e[1] 
-          push = twitterClient.create_tweet(text=text)
+          if any(substring in e[0] for substring in bannedStrings):
+            pass
+          else:
+            text = e[0] + "\n" + "https://mempool.space/tx/" + e[1] 
+            push = twitterClient.create_tweet(text=text)
 
           print(text + "\n\n")
         except:
           pass 
     
-    time.sleep(2*60) #Check for new block every 2 minutes
+    time.sleep(MINUTES*60) #Check for new block every MINUTES minutes
   
 
 if __name__ == "__main__":
