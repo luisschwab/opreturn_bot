@@ -1,0 +1,16 @@
+=:BNB
+=:BTC
+=:ETH
+=:LTC
+=:THOR
+CC
+DC-L5
+OUT:
+REFUND:
+consoldate
+ion:
+s:BCH
+s:DOGE
+s:ETH
+s:GAIA
+s:LT

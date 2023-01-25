@@ -11,14 +11,16 @@ RPC_USER = os.getenv("RPC_USER")
 RPC_PSWD = os.getenv("RPC_PSWD")
 
 MINUTES = 2 #Check for new block every X minutes
-bannedStrings = ['consolidate', 'OUT:', '=:BTC', '=:BNB', '=:ETH'] #Known exchange OP_RETURNS
+BLACKLIST = "blacklist.txt"
+
+bannedStrings = open(BLACKLIST).read().splitlines(); print(bannedStrings)
 
 twitterClient = tweepy.Client(
       consumer_key=os.getenv("CONSUMER_KEY"),
       consumer_secret=os.getenv("CONSUMER_SECRET"),
       access_token=os.getenv("ACCESS_TOKEN"),
       access_token_secret=os.getenv("ACCESS_TOKEN_SECRET")
-)
+  )
 
 
 def getBestBlock():
@@ -72,8 +74,7 @@ def main():
           else:
             text = e[0] + "\n" + "https://mempool.space/tx/" + e[1] 
             push = twitterClient.create_tweet(text=text)
-
-          print(text + "\n\n")
+            print(text + "\n\n")
         except:
           pass 
     
