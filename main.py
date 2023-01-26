@@ -13,7 +13,7 @@ RPC_PSWD = os.getenv("RPC_PSWD")
 MINUTES = 2 #Check for new block every X minutes
 BLACKLIST = "blacklist.txt"
 
-bannedStrings = open(BLACKLIST).read().splitlines(); print(bannedStrings)
+bannedStrings = open(BLACKLIST).read().splitlines()
 
 twitterClient = tweepy.Client(
       consumer_key=os.getenv("CONSUMER_KEY"),
