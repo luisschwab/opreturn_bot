@@ -1,3 +1,6 @@
+:BTC
+=:AVAX
+=:BCH
 =:BNB
 =:BTC
 =:ETH
@@ -5,10 +8,11 @@
 =:THOR
 CC
 DC-L5
-OUT:
-SWAPTX:
-REFUND:
 MIGRATE:
+OUT:
+REFUND:
+SWAPTX:
+USDC
 consolidate
 ion:
 s:BCH
