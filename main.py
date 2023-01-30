@@ -9,9 +9,8 @@ dotenv.load_dotenv(".env")
 NODE_URL = os.getenv("NODE_URL")
 RPC_USER = os.getenv("RPC_USER")
 RPC_PSWD = os.getenv("RPC_PSWD")
-
-MINUTES = 2 #Check for new block every X minutes
-BLACKLIST = "blacklist.txt"
+BLACKLIST = os.getenv("BLACKLIST")
+MINUTES = 2
 
 bannedStrings = open(BLACKLIST).read().splitlines()
 
