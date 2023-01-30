@@ -1,9 +1,11 @@
+ATOM
 :BTC
 =:AVAX
 =:BCH
 =:BNB
 =:BTC
 =:ETH
+=:GAIA
 =:LTC
 =:THOR
 CC
