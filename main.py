@@ -59,23 +59,26 @@ def main():
   bestHash = None
 
   while(1):
-    newBestHash = getBestBlock()
+    try:
+      newBestHash = getBestBlock()
 
-    if newBestHash != bestHash:
-      bestHash = newBestHash
+      if newBestHash != bestHash:
+        bestHash = newBestHash
       
-      opReturns = getTransactions(bestHash)
+        opReturns = getTransactions(bestHash)
  
-      for e in opReturns:
-        try:
-          if any(substring in e[0] for substring in bannedStrings):
+        for e in opReturns:
+          try:
+            if any(substring in e[0] for substring in bannedStrings):
+              pass
+            else:
+              text = e[0] + "\n" + "https://mempool.space/tx/" + e[1] 
+              push = twitterClient.create_tweet(text=text)
+              print(text + "\n\n")
+          except:
             pass
-          else:
-            text = e[0] + "\n" + "https://mempool.space/tx/" + e[1] 
-            push = twitterClient.create_tweet(text=text)
-            print(text + "\n\n")
-        except:
-          pass 
+    except:
+      pass
     
     time.sleep(MINUTES*60) #Check for new block every MINUTES minutes
   
