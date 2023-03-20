@@ -25,3 +25,8 @@ s:DOGE
 s:ETH
 s:GAIA
 s:LT
+omni
+add:
+:maya
+:DOGE
+:MAYA
