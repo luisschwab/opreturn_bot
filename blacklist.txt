@@ -30,3 +30,6 @@ add:
 :maya
 :DOGE
 :MAYA
+aggregate
+BERNSTEIN
+Samaneh
