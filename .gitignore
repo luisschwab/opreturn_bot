@@ -1,3 +1,4 @@
+/target
+
+blacklist.txt
 .env
-*.txt
-venv

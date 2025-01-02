@@ -1,0 +1,14 @@
+[package]
+name = "opreturn_bot"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+dotenv = "0.15.0"
+hex = "0.4.3"
+nostr-sdk = "0.38.0"
+reqwest = "0.12.12"
+serde_json = "1.0.134"
+thousands = "0.2.0"
+tokio = "1.42.0"
+tweety-rs = "0.1.4"
