@@ -152,15 +152,17 @@ async fn main() -> Result<(), reqwest::Error> {
                             match hex::decode(last) {
                                 Ok(bytes) => match std::str::from_utf8(&bytes) {
                                     Ok(utf8) => {
-                                        let utf8_str = utf8.to_string();
+                                        let utf8_str = utf8.to_string().trim().to_string();
+
+                                        
 
                                         // filter OP_RETURN based on blacklist
                                         if !blacklist.iter().any(|item| utf8_str.contains(item)) {
                                             println!(
-                                                "[{} https://mempool.space/{}] OP_RETURN: {}",
+                                                "[{} https://mempool.space/{}] OP_RETURN: {:?}",
                                                 chaintip.separate_with_commas(),
                                                 txid,
-                                                utf8_str
+                                                utf8_str.as_bytes()
                                             );
                                             op_returns.push(utf8_str);
                                         }
@@ -176,7 +178,7 @@ async fn main() -> Result<(), reqwest::Error> {
         }
 
         let payload = format!(
-            "🟧 BLOCK {} 🟧\n{} non-BS OP_RETURN outputs:\n{}",
+            "🟧 BLOCK {} 🟧\n{} non-BS OP_RETURN outputs:\n\n{}",
             chaintip.separate_with_commas(),
             op_returns.len(),
             op_returns.join("\n")
